@@ -1,6 +1,21 @@
 {
   "powerplant": {
-    "description": "",
+    "description": "CargoSub uses a conventional, straight forward nuclear reactor to generate steam for a main propulsion steam turbine and a small steam engine for electrical power generation. Electrical generation steam engine is owned and controlled as part of the electrical system. The powerplant merely provides steam. Both steam engines exhaust into four condensers, returning feedwater to the boiler. Besides normal operation, the powerplant and its controller monitor and control maintenance activities like nuclear refueling, opening/closing the RPV, supplying fresh water to the RPV and boiler, and topping up the fresh water supply with the desalinator.",
+    "physical_arrangement":{
+      "RPV":{
+        "description":"The Reactor Pressure Vessel is the normally sealed and fully flooded custom tank containing the fuel rod assemblies and control rods. Control systems are expected to be good, so the total RPV volume is minimized to reduce response lag.",
+        "top_hatch":"The top of the RPV is a custom door that can be unsealed and opened for refueling.",
+        "freshwater_topping":"A high and low fluid port in the RPV can be used with pumps to fill the RPV with freshwater, or remove water, returning it to the freshwater tank (the game doesn't simulate radioactive water contamination) or dumping it overboard.",
+        "sensors":"A radiation detector (geiger counter) is mounted inside the RPV, exactly above the fuel assemblies' centerline. It is used to calculate reactivity as counts per second. A temperature sensor is used to monitor average coolant temperature. All fuel rod assemblies indicate their own individual temperatures, which are monitored. Finally, there is a liquid sensor for water pressure and percent capacity.",
+        "connections":[
+          "high fluid port connects to large ReactorCoolantPump"
+        ]
+      },
+      "reactor_coolant_loop":{
+        "description":"The normal flow, starting with the hot leg, is from the RPV high fluid port, to ReactorCoolantPump(s), to ReactorCoolantVariableValve, to BoilerCoolantA. The cold leg returns from BoilerCoolantB to the RPV low fluid port."
+      },
+      "heat_dump":""
+    },
     "powerplant_controller": {
       "description": "",
       "inputs_bool": [],
