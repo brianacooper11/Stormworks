@@ -12,9 +12,12 @@
         ]
       },
       "reactor_coolant_loop":{
-        "description":"The normal flow, starting with the hot leg, is from the RPV high fluid port, to ReactorCoolantPump(s), to ReactorCoolantVariableValve, to BoilerCoolantA. The cold leg returns from BoilerCoolantB to the RPV low fluid port."
+        "description":"The normal flow, starting with the hot leg, is from the RPV high fluid port, to ReactorCoolantPump(s), to ReactorCoolantVariableValve, to BoilerCoolantA. The cold leg returns from BoilerCoolantB to the RPV low fluid port.",
+      "heat_dump":"To rapidly reduce reactor coolant temperatures during agressive power reductions or scrams, a bypass loop bypasses the boiler, and reactor coolant is routed through a liquid-liquid seawater heat exchanger to dump heat rapidly overboard. The bypass loop begins with a Y-connection on the hot leg, downstream of the coolant pumps, but before the main variable flow valve. Coolant flows through the 'Y' to the bypass valve, to the heat exchanger, then rejoins the cold leg downstream of BoilerCoolantB."
       },
-      "heat_dump":""
+      "boiler":{
+        "description":""
+      }
     },
     "powerplant_controller": {
       "description": "",
