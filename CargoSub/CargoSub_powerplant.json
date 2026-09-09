@@ -5,15 +5,16 @@
       "RPV":{
         "description":"The Reactor Pressure Vessel is the normally sealed and fully flooded custom tank containing the fuel rod assemblies and control rods. Control systems are expected to be good, so the total RPV volume is minimized to reduce response lag.",
         "top_hatch":"The top of the RPV is a custom door that can be unsealed and opened for refueling.",
-        "freshwater_topping":"A high and low fluid port in the RPV can be used with pumps to fill the RPV with freshwater, or remove water, returning it to the freshwater tank (the game doesn't simulate radioactive water contamination) or dumping it overboard.",
+        "freshwater_topping":"Two dedicated fluid ports in the RPV can be used with pumps to fill the RPV with freshwater, or remove water, returning it to the freshwater tank (the game doesn't simulate radioactive water contamination) or dumping it overboard.",
         "sensors":"A radiation detector (geiger counter) is mounted inside the RPV, exactly above the fuel assemblies' centerline. It is used to calculate reactivity as counts per second. A temperature sensor is used to monitor average coolant temperature. All fuel rod assemblies indicate their own individual temperatures, which are monitored. Finally, there is a liquid sensor for water pressure and percent capacity.",
         "connections":[
-          "high fluid port connects to large ReactorCoolantPump"
+          
         ]
       },
       "reactor_coolant_loop":{
-        "description":"The normal flow, starting with the hot leg, is from the RPV high fluid port, to ReactorCoolantPump(s), to ReactorCoolantVariableValve, to BoilerCoolantA. The cold leg returns from BoilerCoolantB to the RPV low fluid port.",
-      "heat_dump":"To rapidly reduce reactor coolant temperatures during agressive power reductions or scrams, a bypass loop bypasses the boiler, and reactor coolant is routed through a liquid-liquid seawater heat exchanger to dump heat rapidly overboard. The bypass loop begins with a Y-connection on the hot leg, downstream of the coolant pumps, but before the main variable flow valve. Coolant flows through the 'Y' to the bypass valve, to the heat exchanger, then rejoins the cold leg downstream of BoilerCoolantB."
+        "description":"The normal flow, starting with the hot leg, is from the RPV high fluid port, to ReactorCoolantPump(s), to ReactorCoolantVariableValve, to BoilerCoolantA. The cold leg returns from BoilerCoolantB to the RPV low fluid port."
+      },
+      "heat_dump":"To rapidly reduce reactor coolant temperature during rapid power reductions or scrams, a dedicated heat exchanger loop removes heat through a liquid-liquid seawater heat exchanger. This heat dump loop has its own connection ports to the RPV."
       },
       "boiler":{
         "description":"Heat from the reactor coolant loop converts feedwater to steam. Boiler temperature is regulated at some number just above 100 degrees C by closed loop control of the reactor coolant flow rate. Feedwater flow rate is used to regulate steam production, either to a target EngRPS (feedwater regulation), or to a target steam chest pressure (main steam valve regulation). The boiler and downstream steam system will have overpressure protection logic via feedwater throttling. The overpressure valve is also used to dump steam during rapid power reductions and scrams."
@@ -92,4 +93,4 @@
       }
     }
   }
-}
+
