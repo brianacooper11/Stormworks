@@ -1,0 +1,70 @@
+{
+  "powerplant": {
+    "description": "",
+    "powerplant_controller": {
+      "description": "",
+      "inputs_bool": [],
+      "inputs_float": [
+        "RPSCmd",
+        "PropPitchCmd",
+        "ReactorCounter",
+        "ReactorControlRodPos",
+        "ReactorCoolantTemp",
+        "ReactorFuelRodXTemp",
+        "ReactorCoolantFlowRate",
+        "FeedwaterPressure",
+        "FeedwaterFlowRate",
+        "SteamChestPressure",
+        "MainSteamFlowRate",
+        "MainSteamFlowPressure",
+        "EngRPS"
+      ],
+      "outputs_bool": ["ReactorSafeToRun", "SteamAvailable"],
+      "outputs_float": [
+        "MainSteamThrottleCmd",
+        "FeedwaterValveCmd",
+        "PWCValveCmd",
+        "ReactorControlRodCmd",
+        "ReactorReactivity",
+        "ReactorCoolantTemp",
+        "ReactorFuelRodXTemp"
+      ],
+      "control_loop_throttle_valve": {
+        "description": "Regulates transient and short term EngRPS with the main throttling valve. For rapid power reductions, a steam bypass valve can dump steam overboard to prevent an overpressure."
+      },
+      "control_loop_feedwater_valve": {
+        "description": "Regulates steady state EngRPS with feedwater flow rate."
+      },
+      "control_loop_coolant_valve": {
+        "description": "Regulates boiler temperature with reactor coolant flow rate."
+      },
+      "control_loop_control_rods": {
+        "description": "Regulates the coolant temperature via a two loop cascade. The outer loop sets a reactivity setpoint to directly regulate the coolant temperature. The inner loop regulates reactivity with control rod position. Reactivity is measured as counts per second of a radiation detector (Geiger counter) placed above the fuel assembly in the RPV. When ReactorRunReq = 0 (SCRAM/shutdown) closed loop control is reset, and control rod position commanded to 0.0. For rapid, non-SCRAM power reductions, before reactivity can be brought down, reactor coolant is routed through a liquid/liquid heat exchanger to dump heat faster. For now, this logic will be included in the main coolant temp loops."
+      },
+      "powerplant_supervisor_logic": {
+        "description": "Manages the status flags, modes, and other ancilliary non-loop aspects of the powerplant",
+        "ReactorRunReq": {
+          "description": "If ReactorRunReq AND ReactorSafeToRun then do the conditions_met actions. Else, do the conditions_not_met actions.",
+          "conditions_met": [
+            "Allow the control loops to run each frame",
+            "Reactor coolant, feedwater, condenser coolant pumps on.",
+            "CoolantTempSetpoint = 130",
+            "ReactivitySetpoint = TBD",
+            "SteamChestPressSetpoint = 9.0"
+          ],
+          "conditions_not_met": [
+            "control loops suspended",
+            "ControlRodPosCmd = 0.0",
+            "ReactorCoolantHeatDump = true",
+            "FeedwaterValveCmd = 0.0",
+            "SteamChestPressSetpoint = 1.0",
+            "MainSteamThrottleCmd = 0.0",
+            "SteamBypassValveCmd = 1.0",
+            "As various temperatures and pressures acheive steady state, turn off the relavent pumps, and close the steam bypass valve."
+          ]
+        },
+        "feedwater_makeup": "If the feedwater tank drops below a certain level, the desalinator is run until the proper level is reached. Bang-bang control."
+      }
+    }
+  }
+}
