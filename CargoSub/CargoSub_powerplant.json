@@ -88,7 +88,7 @@
             "As various temperatures and pressures acheive steady state, turn off the relavent pumps, and close the steam bypass valve."
           ]
         },
-        "feedwater_makeup": "If the feedwater tank drops below a certain level, the desalinator is run until the proper level is reached. Bang-bang control."
+        "feedwater_makeup": "The freshwater tank will be nearly full when the powerplant is shut down, but the tank level will drop and vary during operation due to its use in the steam loops and as a liquid in condensers. Based on actual testing, a suitable control system for desalinator operation will be implimented."
       }
     }
   }
