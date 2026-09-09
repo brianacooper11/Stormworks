@@ -16,8 +16,15 @@
       "heat_dump":"To rapidly reduce reactor coolant temperatures during agressive power reductions or scrams, a bypass loop bypasses the boiler, and reactor coolant is routed through a liquid-liquid seawater heat exchanger to dump heat rapidly overboard. The bypass loop begins with a Y-connection on the hot leg, downstream of the coolant pumps, but before the main variable flow valve. Coolant flows through the 'Y' to the bypass valve, to the heat exchanger, then rejoins the cold leg downstream of BoilerCoolantB."
       },
       "boiler":{
-        "description":""
-      }
+        "description":"Heat from the reactor coolant loop converts feedwater to steam. Boiler temperature is regulated at some number just above 100 degrees C by closed loop control of the reactor coolant flow rate. Feedwater flow rate is used to regulate steam production, either to a target EngRPS (feedwater regulation), or to a target steam chest pressure (main steam valve regulation). The boiler and downstream steam system will have overpressure protection logic via feedwater throttling. The overpressure valve is also used to dump steam during rapid power reductions and scrams."
+      },
+      "steam_loops":{
+        "description":"There are two pseudo-coupled steam loops, and an overpressure relief valve. Steam from the boiler enters the steam chest, a large gas tank. From the steam xhest, steam can take two paths, to the main propulsion steam engine, and the power generation steam engine. Both engines have a throttling variable flow valve upstream, and both exhaust into the same condenser bank. The power generation loop has a steam demand dramatically smaller than main steam propulsion.",
+        "main_propulsion_engine":"Downstream of the steam chest, steam flows through the main throttle valve to a large steam turbine engine. The condensers downstream maintain a near-vacuum backpressure for efficiency. EngRPS is connected via gearbox directly to the giant variable pitch propeller. Main screw reversing is unanticipated, backing being achieved with PropPitch.",
+        "power_gen_engine":"The power generation ateam engine is owned and regulated by the electrical system, but steam pressure and flowrate are measured as a load demand. The propulsion system sets a SteamAvailable flag that that is used to indicate to the electrical system that it is acceptable to use steam.",
+        "condenser_bank":"Both engines exhaust to a bank of parallel condensers. During powerplant operation, seawater coolant is continuously pumped at full power through the condensors. The generated freshwater levels are monitored and regulated by pumps and valves, returning water to the freshwater (feedwater) tanks."
+      },
+      "freshwater_system":"A large freshwater tank provides freshwater to the boiler (feedwater) and RPV for refilling. Makeup feedwater is produced by a desalinator. A large flyid pump and variable flow valve just upsyream of the boiler are used to regulate feedwater flow."
     },
     "powerplant_controller": {
       "description": "",
