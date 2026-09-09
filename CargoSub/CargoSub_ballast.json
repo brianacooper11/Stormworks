@@ -1,8 +1,5 @@
 {
   "CargoSub_ballast":{
-    "facts":[
-      "Scuba goot to 5 atmospheres, or 50 meters. Diving suit good to 24 atmospheres, or 240 meters."
-    ],
     "description":"There are 8 ballast tanks, four each at the bow and stern. In each group, there are top, bottom, port and starboard tanks. The tanks",
     "these_tanks_are_different":"On a normal submarine masses vary little relative to the sub's displacement, and changes are tracked carefully. The trim balast tanks on a normal sub are very small. The main ballast tanks aren't used to modulate bouyancy. They are fully blown to surface, or fully flooded to achieve a precalculated neutral bouyancy immediately, with only minor adjustments to the trim tanks. Once submerged, the sub does very little blowing or flooding because it operates at nearly constant weight. CargoSub is completely different. It loads and unloads payloads that weight more than the sub itself. The main ballast tanks cannot sit with constant ballast. As loads are taken up or released, the ballast tanks must be exercise across much of their range of ballast. Because the payload can be greater than the sub's weight, they must take up a dramatic fraction of the sub's volume. Despite their size, they must be flooded and blown quickly, if loading and unloading are to proceed quickly. This all implies a huge need for pressurized air, and not just air at one atmosphere, but up to 60 atmospheres, to blow the tanks mostly empty, at the greatest depths, and greatest weights. Unless the charging air tanks are themselves abnormally large, CHARGING AIR IS A VALUABLE RESOURCE. It cannot be blown overboard.",
     "ballast_tanks":{
