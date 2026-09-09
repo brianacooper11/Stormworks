@@ -1,0 +1,40 @@
+{
+"electrical_system":{
+      "components":{
+        "main_battery":{
+          "power_connections":[
+            "main_electric_bus"
+          ]
+        },
+        "main_generator":{
+          "description":"One large generator. Rps input can be driven by small steam piston engine(s) or the standby diesel generator, one OR the other being clutched in through their own optimized gearboxes.",
+          "power_connections":[
+            "main_battery"
+          ]
+        },
+        "elect_gen_steam_engine":{
+          "description":"The normal operation source of electrical power generation. It is 'owned' by the electrical system and controller, not the powerplant system or controller. This is because it is closed loop controlled by the electrical system controller, based on a SteamAvailable flag from the powerplant controller. A variable flow rate valve is used for regulation."
+        },
+        "diesel_engine":{
+          "description":"A medium diesel engine for standby power when surfaced. It is 'owned' by the electrical system controller. Intake and exhaust air are routed to an extendable snorkel, well above the waterline when surfaced. The fuel tank, adjacent to the engine, is refueled through a fluid connector next to the main personnel hatch. The coolant loop is plumbed directly to seawater ports at the bottom of the sub. a small battery with diode charger provide emergency start power"
+        },
+        "main_electric_bus":{
+          "description":"Actually an electric relay block, with A terminal connected to the battery, and B terminal connected to ALL electrical loads for now. I may create multiple power buses later.",
+          "B_terminal_connections":[
+            "all_loads"
+          ]
+        },
+        "external_power_connectors":{
+          "description":"Precise use cases are not certain, but the sub is generally expected to provide export power through electrical connectors all around the sub exterior. Although they are all nominally connected to the main bus, diodes may be used to charge the sub through dedicated charging ports, and to prevent the sub from draining power from external sources. Details of that TBD."
+        }
+      },
+      "electrical_system_controller":{
+        "logic_overview":[
+          "A guarded master electrical switch can be used to turn the main electrical bus on and off. This is effectively the ON/OFF switch for the sub.",
+          "The electrical system defaults to autonomous operation in the absence of operator guidance.",
+          "The system always wants a source of power besides the battery. Battery-only operation is considered an imminent emergency. There are three sources of power: reactor (steam), standby diesel, and shore power.",
+          "Autonomous power source selection: If the sub mode is anything other than Standby, the reactor is the preferred source of power. If ReactorSafeToRun is true, the electrical system controller will request the powerplant system to run the controller. The powerplant conyroller will run through a startup, ending either in SteamAvailable = true or ReactorSafeToRun = false. If SteamAvailable, the controller will clutch in the steam engine and regulate its operation. If ReactorSafeToRun is false, the steam engine is declutched, and the second preferred option is shore power. If ShorePowerAvailable, the ShorePower relay is closed, connecting shore power to the battery. If ShorePowerAvailable = false, the controller tries to run the diesel engine. If DieselEngineSafeToRun, the controller will initiate a startup ending in DieselEngineRunning = true, or DieselEngineSafeToRun = false. If DieselEngineRunning, the controller will clutch in the diesel engine and regulate it. If DieselEngineSafeToRun = false (snorkel submerged for example), an emergency is imminent. The operator is prompted to acknowledge the issue. If they do not acknowledge the issue within a few minutes, the controller will actively work to achieve Standby mode, to include EmergencySurface if appropriate."
+        ]
+      }
+}
+}
