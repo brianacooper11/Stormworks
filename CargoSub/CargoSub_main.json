@@ -1,5 +1,19 @@
 {
+  "_meta":[
+    "The coordinate system is positive X foreward (bow), positive Y upward, and positive Z to the right (starboard).",
+    "This file is 'CargoSub_main.json', and is the top level design file for CargoSub. Separate design files for large or complex subsystems will be explicitly named, with placeholders in this file, for organization. Controller functional requirements will be in json, but it is generally understood that they will be implemented as Lua scripts."
+  ],
   "CargoSub": {
+    "description":"CargoSub is a large, conventionally shaped submarine with a large, central cargo bay. The cargo bay top and bottom hull sections are sealable custom doors/hatches opening over the full length and almost full width of the cargo bay. Oversized cargo can be loaded/unloaded through the top hatch while surfaced at ports. That cargo can be loaded/unloaded through the bottom hatch, on the seafloor with cranes mounted under the top hatch.",
+    "physical_arrangement":{
+      "length_overall":"127.5 m",
+      "cargo_bay":{
+        "description":"The main central body of the submarine. It is a constant circular cross section. It is as l9ng as possible, subject to ballast tank volume needs at tje extreme foreward and aft ends of the sub.",
+        "pressurization":"The cargo bay is fully pressurizable and floodable, with water ports, pumps and valves at the bottom, and air ports, pumps and valves at the top. Partial flooding of the cargo bay is problematic for stability and control. Transient flooding is acceptable for very controlled loading/unloading operations at near zero speed and zero pitch and roll. Light payload operations are generally with the cargo bay fully flooded. Heavy payload operations are with the cargo bay generally dry. Whether dry or flooded, the cargo bay is generally operated at near ambient pressures to minimize structural loads",
+        "top_hatch":"",
+        "bottom_hatch":""
+      }
+    },
     "electrical_system":{
       "components":{
         "main_battery":{
