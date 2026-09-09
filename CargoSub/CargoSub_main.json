@@ -11,8 +11,25 @@
         "description":"The main central body of the submarine. It is a constant circular cross section. It is as l9ng as possible, subject to ballast tank volume needs at tje extreme foreward and aft ends of the sub.",
         "pressurization":"The cargo bay is fully pressurizable and floodable, with water ports, pumps and valves at the bottom, and air ports, pumps and valves at the top. Partial flooding of the cargo bay is problematic for stability and control. Transient flooding is acceptable for very controlled loading/unloading operations at near zero speed and zero pitch and roll. Light payload operations are generally with the cargo bay fully flooded. Heavy payload operations are with the cargo bay generally dry. Whether dry or flooded, the cargo bay is generally operated at near ambient pressures to minimize structural loads",
         "top_hatch":"",
-        "bottom_hatch":""
-      }
+        "bottom_hatch":"The bottom hatch consists of the bottom curved part of the hull and the flat 'floor' of the cargo bay. The flat floor forms the bottom cargo bay seal. The space between the floor and outer hull is unsealed",
+        "cranes":"Four heavy winches, spaced fore/aft and port/starboard on the underside of the top hatch, are used to lift and lower payloads when the bottom hatch is opened. Loads suspended from the top of the submarine risk destabilizing the sub in pitch and role. A rigging arrangement is used to force the effective cable mounting point to the sub to be at a much lower, non-destabilizing height."
+      },
+      "bow_ballast_tanks":{
+        "description":"The bow ballast tanks occupy nearly all of the volume of the sub foreward of the cargo. The bow ballast volume is divided into four ballast tanks by two bulkheads at 45 degrees to the vertical, like the letter X (NOT vertical and horizontal like a '+' sign). This creates the top bow ballast tank, bottom bow ballast tank, port bow ballast tank, and starboard bow ballast tank. This minimizes free-surface instabilities and destabilizing ballast heights. Various systems and bits of machinery are placed inside the bow ballast tanks to balance the sub's unloaded CG. For example, heavy batteries in the bottom bow ballast tank, and air system tanks in the top bow ballast tank."
+      },
+      "engineering_room":{
+        "description":"The only pressurized, habitable, crewed part of the sub, the engine room is immediately aft of the cargo bay. It houses the sub's powerplant (nuclear) and also includes the cockpit seat and wall displays where the sub is operated and conned from.",
+        "top_personnel_hatch":"Located at the top centerline of the engineering room. It is the main entrypoint for the submarine when surfaced. It is electrically powered and lockable by the Supervisor controller, but has a small dedicated battery for power casualties.",
+        "airlock":"Located at the bottom of the engineering room, with hatch access to the engineering room, cargo bay, and bottom exterior of the sub. The airlock hatches are electric and controlled by the Supervisor",
+        "snorkel_sensor_mast":"In practice, I found with a previous design that I didn't need a sail structure for conning when surfaced. An extendable snorkel and sensor mast with gyrostabilized camera worked just fine",
+        "powerplant":"see CargoSub_powerplant.json."
+      },
+      "stern_ballast_tanks":{
+        "description":"Just aft of the engineering room, and occupying all of the empennage of the submarine up to the main screw. The stern ballast tanks are divided into four ballast tanks exactly as the bow tanks. Machinery is installed in the tank spaces as needed for the sub's empty CG."
+      },
+      "main_screw":"At the extreme stern of the sub is the single giant adjustable pitch propeller.",
+      "flight_control_surfaces":"Horizontal stabilizers with elevators, and vertical atabilizers with rudders just foreward of the main screw. All-moving bow planes foreward. These are the primary controls for the Up And Away (UAA) control mode.",
+      "RCS_system":"For low speed dynamic positioning (DP control mode), four fluid jets are mounted fore and aft, pointing port and starboard. Their deflectors are aligned up/down, so that collectively, they provide full 6DOF control, minus fore/aft translation (that is provided by constant rps, variable pitch control of the main screw)."
     },
     "electrical_system":{
       "components":{
